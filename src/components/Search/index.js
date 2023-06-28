@@ -38,23 +38,15 @@ const Wrapper = styled.div`
   justify-content: flex-end;
   // padding: 12px 16px;
   border-radius: 12px;
-  background-color: rgb(0 16 41 / 70%);
+  background-color: rgba(255, 255, 255, 0.05);
   border-bottom-right-radius: ${({ open }) => (open ? '0px' : '12px')};
   border-bottom-left-radius: ${({ open }) => (open ? '0px' : '12px')};
   z-index: 9999;
   width: 100%;
   min-width: 300px;
   box-sizing: border-box;
-  box-shadow: ${({ open, small }) =>
-    !open && !small
-      ? '0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04) '
-      : 'none'};
-  @media screen and (max-width: 500px) {
-    box-shadow: ${({ open }) =>
-      !open
-        ? '0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04) '
-        : 'none'};
-  }
+  box-shadow: rgb(0, 0, 0) 0px 1px 56px;
+  
 `
 const Input = styled.input`
   position: relative;
@@ -68,8 +60,8 @@ const Input = styled.input`
   font-size: ${({ large }) => (large ? '20px' : '14px')};
   padding: 16px 20px;
   border-radius: 16px;
-  background: #171717;
-  box-shadow: 0px 0px 50px 0px #000000;
+  background: transparent;
+  box-shadow: rgb(0, 0, 0) 0px 1px 56px;
   color: rgba(255, 255, 255, 0.6);
 
   ::placeholder {
@@ -116,15 +108,15 @@ const Menu = styled.div`
   overflow: auto;
   left: 0;
   padding-bottom: 20px;
-  background: ${({ theme }) => theme.bg6};
+  background: rgb(23, 24, 24);
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
-    0px 24px 32px rgba(0, 0, 0, 0.04);
+  box-shadow: rgb(0, 0, 0) 0px 1px 56px;
   display: ${({ hide }) => hide && 'none'};
 `
 
 const MenuItem = styled(Row)`
+color:white;
   padding: 1rem;
   font-size: 0.85rem;
   & > * {
@@ -146,7 +138,7 @@ const Gray = styled.span`
 `
 
 const Blue = styled.span`
-  color: #2172e5;
+  color: rgb(4, 249, 244);
   :hover {
     cursor: pointer;
   }
@@ -275,100 +267,100 @@ export const Search = ({ small = false }) => {
   const filteredTokenList = useMemo(() => {
     return uniqueTokens
       ? uniqueTokens
-          .sort((a, b) => {
-            const tokenA = allTokenData[a.id]
-            const tokenB = allTokenData[b.id]
-            if (tokenA?.oneDayVolumeUSD && tokenB?.oneDayVolumeUSD) {
-              return tokenA.oneDayVolumeUSD > tokenB.oneDayVolumeUSD ? -1 : 1
+        .sort((a, b) => {
+          const tokenA = allTokenData[a.id]
+          const tokenB = allTokenData[b.id]
+          if (tokenA?.oneDayVolumeUSD && tokenB?.oneDayVolumeUSD) {
+            return tokenA.oneDayVolumeUSD > tokenB.oneDayVolumeUSD ? -1 : 1
+          }
+          if (tokenA?.oneDayVolumeUSD && !tokenB?.oneDayVolumeUSD) {
+            return -1
+          }
+          if (!tokenA?.oneDayVolumeUSD && tokenB?.oneDayVolumeUSD) {
+            return tokenA?.totalLiquidity > tokenB?.totalLiquidity ? -1 : 1
+          }
+          return 1
+        })
+        .filter((token) => {
+          if (TOKEN_BLACKLIST.includes(token.id)) {
+            return false
+          }
+          const regexMatches = Object.keys(token).map((tokenEntryKey) => {
+            const isAddress = value.slice(0, 2) === '0x'
+            if (tokenEntryKey === 'id' && isAddress) {
+              return token[tokenEntryKey].match(new RegExp(escapeRegExp(value), 'i'))
             }
-            if (tokenA?.oneDayVolumeUSD && !tokenB?.oneDayVolumeUSD) {
-              return -1
+            if (tokenEntryKey === 'symbol' && !isAddress) {
+              return token[tokenEntryKey].match(new RegExp(escapeRegExp(value), 'i'))
             }
-            if (!tokenA?.oneDayVolumeUSD && tokenB?.oneDayVolumeUSD) {
-              return tokenA?.totalLiquidity > tokenB?.totalLiquidity ? -1 : 1
+            if (tokenEntryKey === 'name' && !isAddress) {
+              return token[tokenEntryKey].match(new RegExp(escapeRegExp(value), 'i'))
             }
-            return 1
+            return false
           })
-          .filter((token) => {
-            if (TOKEN_BLACKLIST.includes(token.id)) {
-              return false
-            }
-            const regexMatches = Object.keys(token).map((tokenEntryKey) => {
-              const isAddress = value.slice(0, 2) === '0x'
-              if (tokenEntryKey === 'id' && isAddress) {
-                return token[tokenEntryKey].match(new RegExp(escapeRegExp(value), 'i'))
-              }
-              if (tokenEntryKey === 'symbol' && !isAddress) {
-                return token[tokenEntryKey].match(new RegExp(escapeRegExp(value), 'i'))
-              }
-              if (tokenEntryKey === 'name' && !isAddress) {
-                return token[tokenEntryKey].match(new RegExp(escapeRegExp(value), 'i'))
-              }
-              return false
-            })
-            return regexMatches.some((m) => m)
-          })
+          return regexMatches.some((m) => m)
+        })
       : []
   }, [allTokenData, uniqueTokens, value])
 
   const filteredPairList = useMemo(() => {
     return uniquePairs
       ? uniquePairs
-          .sort((a, b) => {
-            const pairA = allPairData[a.id]
-            const pairB = allPairData[b.id]
-            if (pairA?.trackedReserveETH && pairB?.trackedReserveETH) {
-              return parseFloat(pairA.trackedReserveETH) > parseFloat(pairB.trackedReserveETH) ? -1 : 1
+        .sort((a, b) => {
+          const pairA = allPairData[a.id]
+          const pairB = allPairData[b.id]
+          if (pairA?.trackedReserveETH && pairB?.trackedReserveETH) {
+            return parseFloat(pairA.trackedReserveETH) > parseFloat(pairB.trackedReserveETH) ? -1 : 1
+          }
+          if (pairA?.trackedReserveETH && !pairB?.trackedReserveETH) {
+            return -1
+          }
+          if (!pairA?.trackedReserveETH && pairB?.trackedReserveETH) {
+            return 1
+          }
+          return 0
+        })
+        .filter((pair) => {
+          if (PAIR_BLACKLIST.includes(pair.id)) {
+            return false
+          }
+          if (value && value.includes(' ')) {
+            const pairA = value.split(' ')[0]?.toUpperCase()
+            const pairB = value.split(' ')[1]?.toUpperCase()
+            return (
+              (pair.token0.symbol.includes(pairA) || pair.token0.symbol.includes(pairB)) &&
+              (pair.token1.symbol.includes(pairA) || pair.token1.symbol.includes(pairB))
+            )
+          }
+          if (value && value.includes('-')) {
+            const pairA = value.split('-')[0]?.toUpperCase()
+            const pairB = value.split('-')[1]?.toUpperCase()
+            return (
+              (pair.token0.symbol.includes(pairA) || pair.token0.symbol.includes(pairB)) &&
+              (pair.token1.symbol.includes(pairA) || pair.token1.symbol.includes(pairB))
+            )
+          }
+          const regexMatches = Object.keys(pair).map((field) => {
+            const isAddress = value.slice(0, 2) === '0x'
+            if (field === 'id' && isAddress) {
+              return pair[field].match(new RegExp(escapeRegExp(value), 'i'))
             }
-            if (pairA?.trackedReserveETH && !pairB?.trackedReserveETH) {
-              return -1
-            }
-            if (!pairA?.trackedReserveETH && pairB?.trackedReserveETH) {
-              return 1
-            }
-            return 0
-          })
-          .filter((pair) => {
-            if (PAIR_BLACKLIST.includes(pair.id)) {
-              return false
-            }
-            if (value && value.includes(' ')) {
-              const pairA = value.split(' ')[0]?.toUpperCase()
-              const pairB = value.split(' ')[1]?.toUpperCase()
+            if (field === 'token0') {
               return (
-                (pair.token0.symbol.includes(pairA) || pair.token0.symbol.includes(pairB)) &&
-                (pair.token1.symbol.includes(pairA) || pair.token1.symbol.includes(pairB))
+                pair[field].symbol.match(new RegExp(escapeRegExp(value), 'i')) ||
+                pair[field].name.match(new RegExp(escapeRegExp(value), 'i'))
               )
             }
-            if (value && value.includes('-')) {
-              const pairA = value.split('-')[0]?.toUpperCase()
-              const pairB = value.split('-')[1]?.toUpperCase()
+            if (field === 'token1') {
               return (
-                (pair.token0.symbol.includes(pairA) || pair.token0.symbol.includes(pairB)) &&
-                (pair.token1.symbol.includes(pairA) || pair.token1.symbol.includes(pairB))
+                pair[field].symbol.match(new RegExp(escapeRegExp(value), 'i')) ||
+                pair[field].name.match(new RegExp(escapeRegExp(value), 'i'))
               )
             }
-            const regexMatches = Object.keys(pair).map((field) => {
-              const isAddress = value.slice(0, 2) === '0x'
-              if (field === 'id' && isAddress) {
-                return pair[field].match(new RegExp(escapeRegExp(value), 'i'))
-              }
-              if (field === 'token0') {
-                return (
-                  pair[field].symbol.match(new RegExp(escapeRegExp(value), 'i')) ||
-                  pair[field].name.match(new RegExp(escapeRegExp(value), 'i'))
-                )
-              }
-              if (field === 'token1') {
-                return (
-                  pair[field].symbol.match(new RegExp(escapeRegExp(value), 'i')) ||
-                  pair[field].name.match(new RegExp(escapeRegExp(value), 'i'))
-                )
-              }
-              return false
-            })
-            return regexMatches.some((m) => m)
+            return false
           })
+          return regexMatches.some((m) => m)
+        })
       : []
   }, [allPairData, uniquePairs, value])
 
@@ -431,12 +423,12 @@ export const Search = ({ small = false }) => {
             small
               ? ''
               : below410
-              ? 'Search...'
-              : below470
-              ? 'Search WanSwap...'
-              : below700
-              ? 'Search pairs and tokens...'
-              : 'Search WanSwap pairs and tokens...'
+                ? 'Search...'
+                : below470
+                  ? 'Search RexDex...'
+                  : below700
+                    ? 'Search pairs and tokens...'
+                    : 'Search RexDex pairs and tokens...'
           }
           value={value}
           onChange={(e) => {

@@ -261,7 +261,7 @@ function AccountPage({ account }) {
             </DropdownWrapper>
           )}
           {!hideLPContent && (
-            <Panel style={{ height: '100%', marginBottom: '1rem', background: '#171717' }}>
+            <Panel style={{ height: '100%', marginBottom: '1rem', background: 'rgba(255, 255, 255, 0.05)' }}>
               <AutoRow gap="20px">
                 <AutoColumn gap="10px">
                   <RowBetween>
@@ -294,7 +294,7 @@ function AccountPage({ account }) {
           )}
           {!hideLPContent && (
             <PanelWrapper>
-              <Panel style={{ gridColumn: '1', background: '#171717' }}>
+              <Panel style={{ gridColumn: '1', background: 'rgba(255, 255, 255, 0.05)' }}>
                 {activePosition ? (
                   <PairReturnsChart account={account} position={activePosition} />
                 ) : (
@@ -309,7 +309,7 @@ function AccountPage({ account }) {
           <Panel
             style={{
               marginTop: '1.5rem',
-              background: '#171717',
+              background: 'rgba(255, 255, 255, 0.05)',
             }}
           >
             <PositionList positions={positions} />
@@ -321,7 +321,7 @@ function AccountPage({ account }) {
             style={{
               marginTop: '1.5rem',
               display: 'none',
-              background: '#171717',
+              background: 'rgba(255, 255, 255, 0.05)',
             }}
           >
             {miningPositions && <MiningPositionList miningPositions={miningPositions} />}
@@ -340,7 +340,7 @@ function AccountPage({ account }) {
           <Panel
             style={{
               marginTop: '1.5rem',
-              background: '#171717',
+              background: 'rgba(255, 255, 255, 0.05)',
             }}
           >
             <TxnList transactions={transactions} />
@@ -351,7 +351,7 @@ function AccountPage({ account }) {
           <Panel
             style={{
               marginTop: '1.5rem',
-              background: '#171717',
+              background: 'rgba(255, 255, 255, 0.05)',
             }}
           >
             <AutoRow gap="20px">

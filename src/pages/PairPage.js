@@ -275,7 +275,7 @@ function PairPage({ pairAddress, history }) {
                   {!!!savedPairs[pairAddress] && !below1080 ? (
                     <Hover onClick={() => addPair(pairAddress, token0.id, token1.id, token0.symbol, token1.symbol)}>
                       <StyledIcon>
-                        <PlusCircle style={{ marginRight: '0.5rem', color: '#FFE600' }} />
+                        <PlusCircle style={{ marginRight: '0.5rem', color: 'rgb(4, 249, 244)' }} />
                       </StyledIcon>
                     </Hover>
                   ) : !below1080 ? (
@@ -287,12 +287,12 @@ function PairPage({ pairAddress, history }) {
                   )}
 
                   <Link external href={getPoolLink(token0?.id, token1?.id)}>
-                    <ButtonLight style={{ border: '1px solid #00A045' }} color={'#00A045'}>
+                    <ButtonLight style={{ border: '1px solid rgb(4, 249, 244)' }} color={'rgb(4, 249, 244)'}>
                       + Add Liquidity
                     </ButtonLight>
                   </Link>
                   <Link external href={getSwapLink(token0?.id, token1?.id)}>
-                    <ButtonDark ml={!below1080 && '.5rem'} mr={below1080 && '.5rem'} color={'#00A045'}>
+                    <ButtonDark ml={!below1080 && '.5rem'} mr={below1080 && '.5rem'} color={'rgb(4, 249, 244)'}>
                       Trade
                     </ButtonDark>
                   </Link>
@@ -350,8 +350,8 @@ function PairPage({ pairAddress, history }) {
                 <Panel
                   style={{
                     height: '100%',
-                    background: '#171717',
-                    boxShadow: '0px 0px 50px 0px #000000',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    boxShadow: 'rgb(0, 0, 0) 0px 1px 56px',
                     borderRadius: '16px',
                   }}
                 >
@@ -371,8 +371,8 @@ function PairPage({ pairAddress, history }) {
                 <Panel
                   style={{
                     height: '100%',
-                    background: '#171717',
-                    boxShadow: '0px 0px 50px 0px #000000',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    boxShadow: 'rgb(0, 0, 0) 0px 1px 56px',
                     borderRadius: '16px',
                   }}
                 >
@@ -392,8 +392,8 @@ function PairPage({ pairAddress, history }) {
                 <Panel
                   style={{
                     height: '100%',
-                    background: '#171717',
-                    boxShadow: '0px 0px 50px 0px #000000',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    boxShadow: 'rgb(0, 0, 0) 0px 1px 56px',
                     borderRadius: '16px',
                   }}
                 >
@@ -413,8 +413,8 @@ function PairPage({ pairAddress, history }) {
                 <Panel
                   style={{
                     height: '100%',
-                    background: '#171717',
-                    boxShadow: '0px 0px 50px 0px #000000',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    boxShadow: 'rgb(0, 0, 0) 0px 1px 56px',
                     borderRadius: '16px',
                   }}
                 >
@@ -451,14 +451,14 @@ function PairPage({ pairAddress, history }) {
                   style={{
                     gridColumn: below1080 ? '1' : '2/4',
                     gridRow: below1080 ? '' : '1/5',
-                    background: '#171717',
-                    boxShadow: '0px 0px 50px 0px #000000',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    boxShadow: 'rgb(0, 0, 0) 0px 1px 56px',
                     borderRadius: '16px',
                   }}
                 >
                   <PairChart
                     address={pairAddress}
-                    color={'#00A045'}
+                    color={'rgb(4, 249, 244)'}
                     base0={reserve1 / reserve0}
                     base1={reserve0 / reserve1}
                   />
@@ -470,10 +470,10 @@ function PairPage({ pairAddress, history }) {
               <Panel
                 style={{
                   marginTop: '1.5rem',
-                  background: '#171717',
+                  background: 'rgba(255, 255, 255, 0.05)',
                 }}
               >
-                {transactions ? <TxnList color={'#FFE600'} transactions={transactions} /> : <Loader />}
+                {transactions ? <TxnList color={'rgb(4, 249, 244)'} transactions={transactions} /> : <Loader />}
               </Panel>
               <RowBetween style={{ marginTop: '3rem' }}>
                 <TYPE.main fontSize={'1.125rem'}>Pair Information</TYPE.main>{' '}
@@ -482,7 +482,7 @@ function PairPage({ pairAddress, history }) {
                 rounded
                 style={{
                   marginTop: '1.5rem',
-                  background: '#171717',
+                  background: 'rgba(255, 255, 255, 0.05)',
                 }}
                 p={20}
               >
@@ -534,8 +534,8 @@ function PairPage({ pairAddress, history }) {
                       <CopyHelper toCopy={token1?.id} />
                     </AutoRow>
                   </Column>
-                  <ButtonLight style={{ border: '1px solid #FFE600' }} color={'#FFE600'}>
-                    <Link color={'#FFE600'} external href={'https://www.wanscan.org/address/' + pairAddress}>
+                  <ButtonLight style={{ border: '1px solid rgb(4, 249, 244)' }} color={'rgb(4, 249, 244)'}>
+                    <Link color={'rgb(4, 249, 244)'} external href={'https://www.wanscan.org/address/' + pairAddress}>
                       View on Wanscan ↗
                     </Link>
                   </ButtonLight>

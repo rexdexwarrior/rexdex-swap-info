@@ -214,7 +214,7 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10, useTracked = fals
             <CustomLink
               style={{ marginLeft: '20px', whiteSpace: 'nowrap' }}
               to={'/pair/' + pairAddress}
-              color={'#FFE600'}
+              color={'rgb(4, 249, 244)'}
             >
               <FormattedName
                 text={pairData.token0.symbol + '-' + pairData.token1.symbol}
@@ -341,7 +341,7 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10, useTracked = fals
             >
               1y Fees / Liquidity {sortedColumn === SORT_FIELD.APY ? (!sortDirection ? '↑' : '↓') : ''}
             </ClickableText>
-            <QuestionHelper color={'#FFE600'} text={'Based on 24hr volume annualized'} />
+            <QuestionHelper color={'rgb(4, 249, 244)'} text={'Based on 24hr volume annualized'} />
           </Flex>
         )}
       </DashGrid>

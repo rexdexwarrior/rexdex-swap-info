@@ -34,7 +34,7 @@ function AllPairsPage() {
           <CheckBox checked={useTracked} setChecked={() => setUseTracked(!useTracked)} text={'Hide unstable pairs'} />
           <QuestionHelper text="USD amounts may be inaccurate in low liquiidty pairs or pairs without ETH or stablecoins." />
         </AutoRow>
-        <Panel style={{ padding: below800 && '1rem 0 0 0 ', background: '#171717' }}>
+        <Panel style={{ padding: below800 && '1rem 0 0 0 ', background: 'rgba(255, 255, 255, 0.05)' }}>
           <PairList pairs={allPairs} disbaleLinks={true} maxItems={50} useTracked={useTracked} />
         </Panel>
       </FullWrapper>

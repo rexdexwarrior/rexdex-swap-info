@@ -19,7 +19,7 @@ const panelPseudo = css`
 
 const Panel = styled(RebassBox)`
   position: relative;
-  background-color: rgb(0 9 41 / 40%);
+  background-color: rgba(255, 255, 255, 0.05);
   padding: 1.25rem;
   width: 100%;
   height: 100%;
@@ -27,6 +27,7 @@ const Panel = styled(RebassBox)`
   flex-direction: column;
   justify-content: flex-start;
   border-radius: 15px;
+  box-shadow: rgb(0, 0, 0) 0px 1px 56px
 
   :hover {
     cursor: ${({ hover }) => hover && 'pointer'};

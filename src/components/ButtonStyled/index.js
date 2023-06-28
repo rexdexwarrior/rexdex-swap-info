@@ -98,7 +98,7 @@ export function ButtonDropdown({ disabled = false, children, open, ...rest }) {
 
 export const ButtonDark = styled(Base)`
   background-color: ${({ color, theme }) => (color ? color : theme.primary1)};
-  color: white;
+  color: #131313;
   width: fit-content;
   border-radius: 12px;
   white-space: nowrap;
@@ -143,9 +143,9 @@ export const OptionButton = styled.div`
   white-space: nowrap;
   padding: 6px;
   border-radius: 6px;
-  border: 1px solid ${({ theme }) => '#00A045'};
-  background-color: ${({ active, theme }) => active && '#00A045'};
-  color: ${({ active, theme }) => (active ? 'rgb(49, 49, 49)' : '#00A045')};
+  border: 1px solid rgb(4, 249, 244);
+  background-color: ${({ active, theme }) => active && 'rgb(4, 249, 244)'};
+  color: ${({ active, theme }) => active ? '#131313' : 'rgb(4, 249, 244)'};
 
   :hover {
     cursor: ${({ disabled }) => !disabled && 'pointer'};

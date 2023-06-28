@@ -37,9 +37,9 @@ const rotate = keyframes`
 
 
 const AnimatedImg = styled.div`
-animation: 2s ${rotate} linear infinite;
+/*animation: 2s ${rotate} linear infinite;*/
   & > * {
-    width: 120px;
+    width: 200px;
   }
 `
 
@@ -49,7 +49,7 @@ const LocalLoader = ({ fill }) => {
   return (
     <Wrapper fill={fill}>
       <AnimatedImg>
-        <img width={'200px'} src={require(darkMode ? '../../assets/loader.svg' : '../../assets/logo_dark.png')} alt="loading-icon" />
+        <img width={'200px'} src={require(darkMode ? '../../assets/loader3.svg' : '../../assets/logo_dark.png')} alt="loading-icon" />
       </AnimatedImg>
     </Wrapper>
   )

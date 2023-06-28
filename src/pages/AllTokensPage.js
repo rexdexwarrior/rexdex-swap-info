@@ -26,7 +26,7 @@ function AllTokensPage() {
           <TYPE.largeHeader>Top Tokens</TYPE.largeHeader>
           {!below600 && <Search small={true} />}
         </RowBetween>
-        <Panel style={{ marginTop: '6px', padding: below600 && '1rem 0 0 0 ', background: '#171717' }}>
+        <Panel style={{ marginTop: '6px', padding: below600 && '1rem 0 0 0 ', background: 'rgba(255, 255, 255, 0.05)' }}>
           <TopTokenList tokens={allTokens} itemMax={50} />
         </Panel>
       </FullWrapper>

@@ -68,14 +68,14 @@ function GlobalPage() {
       <ContentWrapper>
         <div>
           <AutoColumn gap="24px" style={{ paddingBottom: below800 ? '0' : '24px' }}>
-            <TYPE.largeHeader>{below800 ? 'Protocol Analytics' : 'WanSwap Protocol Analytics'}</TYPE.largeHeader>
+            <TYPE.largeHeader>{below800 ? 'Protocol Analytics' : 'RexDex Protocol Analytics'}</TYPE.largeHeader>
             <Search />
             <GlobalStats />
           </AutoColumn>
           {below800 && ( // mobile card
             <Box mb={20}>
-              <Panel>
-                <Box>
+              <Panel style={{background: 'rgba(255, 255, 255, 0.05)', boxShadow: 'rgb(0, 0, 0) 0px 1px 56px'}}>
+                <Box >
                   <AutoColumn gap="36px">
                     <AutoColumn gap="20px">
                       <RowBetween>
@@ -110,17 +110,17 @@ function GlobalPage() {
           )}
           {!below800 && (
             <GridRow>
-              <Panel style={{ height: '100%', minHeight: '300px', background: '#171717' }}>
+              <Panel style={{ height: '100%', minHeight: '300px', background: 'rgba(255, 255, 255, 0.05)', boxShadow: 'rgb(0, 0, 0) 0px 1px 56px' }}>
                 <GlobalChart display="liquidity" />
               </Panel>
-              <Panel style={{ height: '100%', background: '#171717' }}>
+              <Panel style={{ height: '100%', background: 'rgba(255, 255, 255, 0.05)', boxShadow: 'rgb(0, 0, 0) 0px 1px 56px' }}>
                 <GlobalChart display="volume" />
               </Panel>
             </GridRow>
           )}
           {below800 && (
             <AutoColumn style={{ marginTop: '6px' }} gap="24px">
-              <Panel style={{ height: '100%', minHeight: '300px' }}>
+              <Panel style={{ height: '100%', minHeight: '300px' , background: 'rgba(255, 255, 255, 0.05)', boxShadow: 'rgb(0, 0, 0) 0px 1px 56px'}}>
                 <GlobalChart display="liquidity" />
               </Panel>
             </AutoColumn>
@@ -128,23 +128,23 @@ function GlobalPage() {
           <ListOptions gap="10px" style={{ marginTop: '2rem', marginBottom: '.5rem' }}>
             <RowBetween>
               <TYPE.main fontSize={'1.125rem'}>Top Tokens</TYPE.main>
-              <CustomLink color={'#FFE400'} to={'/tokens'}>
+              <CustomLink color={'rgb(4, 249, 244)'} to={'/tokens'}>
                 See All
               </CustomLink>
             </RowBetween>
           </ListOptions>
-          <Panel style={{ marginTop: '6px', padding: '1.125rem 0 ', background: '#171717' }}>
+          <Panel style={{ marginTop: '6px', padding: '1.125rem 0 ', background: 'rgba(255, 255, 255, 0.05)', boxShadow: 'rgb(0, 0, 0) 0px 1px 56px' }}>
             <TopTokenList tokens={allTokens} />
           </Panel>
           <ListOptions gap="10px" style={{ marginTop: '2rem', marginBottom: '.5rem' }}>
             <RowBetween>
               <TYPE.main fontSize={'1rem'}>Top Pairs</TYPE.main>
-              <CustomLink color={'#FFE400'} to={'/pairs'}>
+              <CustomLink color={'rgb(4, 249, 244)'} to={'/pairs'}>
                 See All
               </CustomLink>
             </RowBetween>
           </ListOptions>
-          <Panel style={{ marginTop: '6px', padding: '1.125rem 0 ', background: '#171717' }}>
+          <Panel style={{ marginTop: '6px', padding: '1.125rem 0 ', background: 'rgba(255, 255, 255, 0.05)', boxShadow: 'rgb(0, 0, 0) 0px 1px 56px' }}>
             <PairList pairs={allPairs} useTracked={true} />
           </Panel>
           <span>
@@ -152,8 +152,8 @@ function GlobalPage() {
               Transactions
             </TYPE.main>
           </span>
-          <Panel style={{ margin: '1rem 0', background: '#171717' }}>
-            <TxnList transactions={transactions} color={'#FFE400'} />
+          <Panel style={{ margin: '1rem 0', background: 'rgba(255, 255, 255, 0.05)', boxShadow: 'rgb(0, 0, 0) 0px 1px 56px' }}>
+            <TxnList transactions={transactions} color={'rgb(4, 249, 244)'} />
           </Panel>
         </div>
       </ContentWrapper>

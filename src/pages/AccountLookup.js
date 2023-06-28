@@ -42,7 +42,7 @@ function AccountLookup() {
         <TYPE.main fontSize={'1.125rem'} style={{ marginTop: '2rem' }}>
           Top Liquidity Positions
         </TYPE.main>
-        <Panel style={{ background: '#171717' }}>
+        <Panel style={{ background: 'rgba(255, 255, 255, 0.05)' }}>
           {topLps && topLps.length > 0 ? <LPList lps={topLps} maxItems={200} /> : <LocalLoader />}
         </Panel>
       </FullWrapper>

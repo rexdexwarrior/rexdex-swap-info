@@ -205,7 +205,7 @@ function TokenPage({ address, history }) {
             </TYPE.body>
             <Link
               style={{ width: 'fit-content' }}
-              color={'#FFE600'}
+              color={'rgb(4, 249, 244)'}
               external
               href={'https://www.wanscan.org/address/' + address}
             >
@@ -249,7 +249,7 @@ function TokenPage({ address, history }) {
                   {!!!savedTokens[address] && !below800 ? (
                     <Hover onClick={() => addToken(address, symbol)}>
                       <StyledIcon>
-                        <PlusCircle style={{ marginRight: '0.5rem', color: '#FFE600' }} />
+                        <PlusCircle style={{ marginRight: '0.5rem', color: 'rgb(4, 249, 244)' }} />
                       </StyledIcon>
                     </Hover>
                   ) : !below1080 ? (
@@ -260,12 +260,12 @@ function TokenPage({ address, history }) {
                     <></>
                   )}
                   <Link href={getPoolLink(address)} target="_blank">
-                    <ButtonLight style={{ border: '1px solid #00A045' }} color={'#00A045'}>
+                    <ButtonLight style={{ border: '1px solid rgb(4, 249, 244)' }} color={'rgb(4, 249, 244)'}>
                       + Add Liquidity
                     </ButtonLight>
                   </Link>
                   <Link href={getSwapLink(address)} target="_blank">
-                    <ButtonDark ml={'.5rem'} mr={below1080 && '.5rem'} color={'#00A045'}>
+                    <ButtonDark ml={'.5rem'} mr={below1080 && '.5rem'} color={'rgb(4, 249, 244)'}>
                       Trade
                     </ButtonDark>
                   </Link>
@@ -304,7 +304,7 @@ function TokenPage({ address, history }) {
                     </AutoColumn>
                   </Panel>
                 )}
-                <Panel style={{ background: '#171717', boxShadow: '0px 0px 50px 0px #000000', borderRadius: '16px' }}>
+                <Panel style={{ background: 'rgba(255, 255, 255, 0.05)', boxShadow: 'rgb(0, 0, 0) 0px 1px 56px', borderRadius: '16px' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
                       <TYPE.main>Total Liquidity</TYPE.main>
@@ -318,7 +318,7 @@ function TokenPage({ address, history }) {
                     </RowBetween>
                   </AutoColumn>
                 </Panel>
-                <Panel style={{ background: '#171717', boxShadow: '0px 0px 50px 0px #000000', borderRadius: '16px' }}>
+                <Panel style={{ background: 'rgba(255, 255, 255, 0.05)', boxShadow: 'rgb(0, 0, 0) 0px 1px 56px', borderRadius: '16px' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
                       <TYPE.main>Volume (24hrs)</TYPE.main>
@@ -333,7 +333,7 @@ function TokenPage({ address, history }) {
                   </AutoColumn>
                 </Panel>
 
-                <Panel style={{ background: '#171717', boxShadow: '0px 0px 50px 0px #000000', borderRadius: '16px' }}>
+                <Panel style={{ background: 'rgba(255, 255, 255, 0.05)', boxShadow: 'rgb(0, 0, 0) 0px 1px 56px', borderRadius: '16px' }}>
                   <AutoColumn gap="20px">
                     <RowBetween>
                       <TYPE.main>Transactions (24hrs)</TYPE.main>
@@ -351,10 +351,10 @@ function TokenPage({ address, history }) {
                   style={{
                     gridColumn: below1080 ? '1' : '2/4',
                     gridRow: below1080 ? '' : '1/4',
-                    background: '#171717',
+                    background: 'rgba(255, 255, 255, 0.05)',
                   }}
                 >
-                  <TokenChart address={address} color={'#00A045'} base={priceUSD} />
+                  <TokenChart address={address} color={'rgb(4, 249, 244)'} base={priceUSD} />
                 </Panel>
               </PanelWrapper>
             </>
@@ -375,7 +375,7 @@ function TokenPage({ address, history }) {
               style={{
                 marginTop: '1.5rem',
                 padding: '1.125rem 0 ',
-                background: '#171717',
+                background: 'rgba(255, 255, 255, 0.05)',
               }}
             >
               {address && fetchedPairsList ? (
@@ -387,8 +387,8 @@ function TokenPage({ address, history }) {
             <RowBetween mt={40} mb={'1rem'}>
               <TYPE.main fontSize={'1.125rem'}>Transactions</TYPE.main> <div />
             </RowBetween>
-            <Panel rounded style={{ background: '#171717' }}>
-              {transactions ? <TxnList color={'#FFE600'} transactions={transactions} /> : <Loader />}
+            <Panel rounded style={{ background: 'rgba(255, 255, 255, 0.05)' }}>
+              {transactions ? <TxnList color={'rgb(4, 249, 244)'} transactions={transactions} /> : <Loader />}
             </Panel>
             <>
               <RowBetween style={{ marginTop: '3rem' }}>
@@ -398,7 +398,7 @@ function TokenPage({ address, history }) {
                 rounded
                 style={{
                   marginTop: '1.5rem',
-                  background: '#171717',
+                  background: 'rgba(255, 255, 255, 0.05)',
                 }}
                 p={20}
               >
@@ -424,8 +424,8 @@ function TokenPage({ address, history }) {
                       <CopyHelper toCopy={address} />
                     </AutoRow>
                   </Column>
-                  <ButtonLight style={{ border: '1px solid #FFE600' }} color={'#FFE600'}>
-                    <Link color={'#FFE600'} external href={'https://www.wanscan.org/address/' + address}>
+                  <ButtonLight style={{ border: '1px solid rgb(4, 249, 244)' }} color={'rgb(4, 249, 244)'}>
+                    <Link color={'rgb(4, 249, 244)'} external href={'https://www.wanscan.org/address/' + address}>
                       View on Wanscan ↗
                     </Link>
                   </ButtonLight>

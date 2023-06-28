@@ -100,7 +100,7 @@ function AccountSearch({ history, small }) {
               />
             </Wrapper>
             <ButtonLight
-              style={{ background: '#00A045', borderRadius: '12px', color: '#FFFFFF' }}
+              style={{ background: 'rgb(4,249,244)', borderRadius: '12px', color: '#131313' }}
               onClick={handleAccountSearch}
             >
               Load Account Details

@@ -3,7 +3,7 @@ import { ThemeProvider as StyledComponentsThemeProvider, createGlobalStyle } fro
 import { useDarkModeManager } from '../contexts/LocalStorage'
 import styled from 'styled-components'
 import { Text } from 'rebass'
-import bg from '../assets/bg.svg'
+import bg from '../assets/bg.png'
 
 export default function ThemeProvider({ children }) {
   const [darkMode] = useDarkModeManager()
@@ -22,7 +22,7 @@ const theme = (darkMode, color) => ({
 
   concreteGray: darkMode ? '#292C2F' : '#FAFAFA',
   inputBackground: darkMode ? '#1F1F1F' : '#FAFAFA',
-  shadowColor: darkMode ? '#000' : '#2F80ED',
+  shadowColor: darkMode ? '#000' : 'rgb(4, 249, 244)',
   mercuryGray: darkMode ? '#333333' : '#E1E1E1',
 
   text1: darkMode ? '#FAFAFA' : '#1F1F1F',
@@ -49,31 +49,31 @@ const theme = (darkMode, color) => ({
   divider: darkMode ? 'rgb(255 255 255 / 8%)' : 'rgba(43, 43, 43, 0.035)',
 
   //primary colors
-  primary1: darkMode ? '#2172E5' : '#ff007a',
-  primary2: darkMode ? '#3680E7' : '#FF8CC3',
-  primary3: darkMode ? '#4D8FEA' : '#FF99C9',
-  primary4: darkMode ? '#376bad70' : '#F6DDE8',
-  primary5: darkMode ? '#153d6f70' : '#FDEAF1',
+  primary1: darkMode ? 'rgb(4, 249, 244)' : '#ff007a',
+  primary2: darkMode ? 'rgb(4, 249, 244)' : '#FF8CC3',
+  primary3: darkMode ? 'rgb(4, 249, 244)' : '#FF99C9',
+  primary4: darkMode ? 'rgb(4, 249, 244)' : '#F6DDE8',
+  primary5: darkMode ? 'rgb(4, 249, 244)' : '#FDEAF1',
 
   // color text
   primaryText1: darkMode ? '#6da8ff' : '#ff007a',
 
   // secondary colors
-  secondary1: darkMode ? '#2172E5' : '#ff007a',
-  secondary2: darkMode ? '#17000b26' : '#F6DDE8',
-  secondary3: darkMode ? '#17000b26' : '#FDEAF1',
+  secondary1: darkMode ? 'rgb(4, 249, 244)' : '#ff007a',
+  secondary2: darkMode ? 'rgb(4, 249, 244)' : '#F6DDE8',
+  secondary3: darkMode ? 'rgb(4, 249, 244)' : '#FDEAF1',
 
-  shadow1: darkMode ? '#000' : '#2F80ED',
+  shadow1: darkMode ? '#000' : 'rgb(4, 249, 244)',
 
   // other
   red1: '#FF6871',
-  green1: '#27AE60',
-  green2: '#00A045',
-  yellow1: '#FFE270',
-  yellow2: '#F3841E',
-  yellow3: '#FFE400',
-  link: 'rgb(33, 114, 229)',
-  blue: '2f80ed',
+  green1: 'rgb(4, 249, 244)',
+  green2: 'rgb(4, 249, 244)',
+  yellow1: 'rgb(4, 249, 244)',
+  yellow2: 'rgb(4, 249, 244)',
+  yellow3: 'rgb(4, 249, 244)',
+  link: 'rgb(4, 249, 244)',
+  blue: 'rgb(4, 249, 244)',
 
   background: darkMode ? 'black' : `radial-gradient(50% 50% at 50% 50%, #ff007a30 0%, #fff 0%)`,
 })
@@ -166,6 +166,43 @@ export const GlobalStyle = createGlobalStyle`
   @supports (font-variation-settings: normal) {
     html { font-family: 'Inter var', sans-serif; }
   }
+
+  /* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #04E0DB #E2ECEE;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+  width: 8px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 6px;
+  background-color: #E2ECEE;
+}
+
+*::-webkit-scrollbar-track:hover {
+  background-color: #E2ECEE;
+}
+
+*::-webkit-scrollbar-track:active {
+  background-color: #E2ECEE;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: #04E0DB;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #04CDC9;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #04CDC9;
+}
   
   html,
   body {
@@ -187,12 +224,12 @@ export const GlobalStyle = createGlobalStyle`
 
   html
   {
-    background: url(${bg});
+    background: rgb(23, 24, 24) url(${bg});
     background-size: cover;
   }
   #shadow_bottom
   {
-    background: url(/shadow_bottom.png) repeat-x;
+    
     width: 100%;
     height: 860px;
     position: fixed;
