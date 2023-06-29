@@ -290,6 +290,10 @@ async function getGlobalData(ethPrice, oldEthPrice) {
         oneDayData.totalLiquidityETH * oldEthPrice
       )
 
+
+      console.log('liquidityChangeUSD',liquidityChangeUSD)
+
+
       // add relevant fields with the calculated amounts
       data.oneDayVolumeUSD = oneDayVolumeUSD
       data.oneWeekVolume = oneWeekVolume

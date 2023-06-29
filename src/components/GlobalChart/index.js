@@ -38,6 +38,8 @@ const GlobalChart = ({ display }) => {
     weeklyVolumeChange,
   } = useGlobalData()
 
+  //alert(liquidityChangeUSD)
+
   // based on window, get starttim
   let utcStartTime = getTimeframe(timeWindow)
 
